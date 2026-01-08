@@ -3,134 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asistente de Viaje v2.0.0</title>
+    <title>Asistente de Viaje v2.1.0</title>
     <meta name="description" content="Bitácora de viajes y gastos offline">
     <meta name="theme-color" content="#0f172a">
     
-    <!-- Tailwind CSS LOCAL para evitar problemas de producción -->
+    <!-- Tailwind CSS v3.4.1 - Última versión estable -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        darkMode: false,
-        theme: {
-          extend: {
-            animation: {
-              'fade-in': 'fadeIn 0.3s ease-out forwards',
-              'slide-in-top': 'slideInTop 0.3s ease-out forwards',
-              'slide-in-bottom': 'slideInBottom 0.3s ease-out forwards',
-              'zoom-in': 'zoomIn 0.2s ease-out forwards',
-            },
-            keyframes: {
-              fadeIn: {
-                'from': { opacity: '0', transform: 'scale(0.95)' },
-                'to': { opacity: '1', transform: 'scale(1)' }
-              },
-              slideInTop: {
-                'from': { opacity: '0', transform: 'translateY(-20px)' },
-                'to': { opacity: '1', transform: 'translateY(0)' }
-              },
-              slideInBottom: {
-                'from': { opacity: '0', transform: 'translateY(20px)' },
-                'to': { opacity: '1', transform: 'translateY(0)' }
-              },
-              zoomIn: {
-                'from': { opacity: '0', transform: 'scale(0.9)' },
-                'to': { opacity: '1', transform: 'scale(1)' }
-              }
+        tailwind.config = {
+            darkMode: false,
+            theme: {
+                extend: {
+                    colors: {
+                        'slate': {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'slide-in-top': 'slideInTop 0.3s ease-out forwards',
+                        'slide-in-bottom': 'slideInBottom 0.3s ease-out forwards',
+                        'zoom-in': 'zoomIn 0.2s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'scale(0.95)' },
+                            'to': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        slideInTop: {
+                            'from': { opacity: '0', transform: 'translateY(-20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInBottom: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        zoomIn: {
+                            'from': { opacity: '0', transform: 'scale(0.9)' },
+                            'to': { opacity: '1', transform: 'scale(1)' }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
     <style>
-      /* Incluir Tailwind CSS directamente */
-      @import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
-      
-      body {
-          -webkit-tap-highlight-color: transparent;
-          user-select: none;
-          touch-action: manipulation;
-          overscroll-behavior-y: none;
-          background-color: #f1f5f9;
-      }
-      input, textarea, select {
-          user-select: text;
-      }
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-      }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-      .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 10px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
-          border-radius: 10px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #94a3b8;
-      }
+        /* Estilos personalizados */
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            touch-action: manipulation;
+            overscroll-behavior-y: none;
+            background-color: #f1f5f9;
+        }
+        input, textarea, select {
+            user-select: text;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Asegurar colores de fondo */
+        .bg-slate-50 { background-color: #f8fafc !important; }
+        .bg-slate-100 { background-color: #f1f5f9 !important; }
+        .bg-slate-800 { background-color: #1e293b !important; }
+        .bg-slate-700 { background-color: #334155 !important; }
+        .bg-blue-50 { background-color: #eff6ff !important; }
+        .bg-emerald-50 { background-color: #ecfdf5 !important; }
+        .bg-violet-50 { background-color: #f5f3ff !important; }
+        .bg-rose-50 { background-color: #fff1f2 !important; }
+        
+        /* Text colors */
+        .text-slate-400 { color: #94a3b8 !important; }
+        .text-slate-700 { color: #334155 !important; }
+        .text-slate-800 { color: #1e293b !important; }
+        .text-white { color: #ffffff !important; }
+        .text-blue-600 { color: #2563eb !important; }
+        .text-emerald-600 { color: #059669 !important; }
+        .text-rose-700 { color: #be123c !important; }
+        .text-violet-700 { color: #6d28d9 !important; }
     </style>
 </head>
-<body>
+<body class="bg-slate-100">
     <div id="root"></div>
 
+    <!-- React 18 con Babel standalone -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <script type="text/babel">
-        const { useState, useEffect, useMemo, useCallback, memo } = React;
+    <script type="text/babel" data-presets="react">
+        const { useState, useEffect, useMemo, useCallback } = React;
 
         // ==========================================
-        // 1. SISTEMA DE ICONOS INTEGRADO
+        // 1. SISTEMA DE ICONOS INTEGRADO (optimizado)
         // ==========================================
         const ICONS = {
-            Play: <polygon points="5 3 19 12 5 21 5 3" />,
-            MapPin: <><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>,
-            DollarSign: <><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></>,
-            Clock: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></>,
-            Car: <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />,
-            AlertTriangle: <><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><line x1="12" x2="12" y1="9" y2="13" /><line x1="12" x2="12.01" y1="17" y2="17" /></>,
-            CheckCircle: <><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></>,
-            Plus: <><line x1="12" x2="12" y1="5" y2="19" /><line x1="5" x2="19" y1="12" y2="12" /></>,
-            Settings: <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />,
-            Fuel: <><line x1="3" x2="15" y1="22" y2="22" /><line x1="4" x2="14" y1="9" y2="9" /><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18" /><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5" /></>,
-            Utensils: <><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></>,
-            Bed: <><path d="M2 4v16" /><path d="M2 8h18a2 2 0 0 1 2 2v10" /><path d="M2 17h20" /><path d="M6 8v9" /></>,
-            Briefcase: <><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></>,
-            CreditCard: <><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></>,
-            Wallet: <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4" />,
-            Landmark: <><line x1="3" x2="21" y1="22" y2="22" /><line x1="6" x2="6" y1="18" y2="11" /><line x1="10" x2="10" y1="18" y2="11" /><line x1="14" x2="14" y1="18" y2="11" /><line x1="18" x2="18" y1="18" y2="11" /><polygon points="12 2 20 7 4 7" /></>,
-            X: <><path d="M18 6 6 18" /><path d="m6 6 12 12" /></>,
-            Save: <><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></>,
-            Zap: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
-            Truck: <><rect width="16" height="13" x="1" y="6" rx="2" /><polygon points="17 10 22 11 22 17 17 17 17 10" /></>,
-            Edit2: <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />,
-            ChevronDown: <path d="m6 9 6 6 6-6" />,
-            ShoppingBag: <><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></>,
-            History: <><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" /><path d="M3 3v9h9" /><path d="M12 7v5l4 2" /></>,
-            User: <><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>,
-            Users: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
-            StickyNote: <><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z" /><path d="M15 3v6h6" /></>,
-            ArrowRight: <path d="M5 12h14M12 5l7 7-7 7" />,
-            Trash2: <><path d="M3 6h18" /><path d="M19 6v14c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V6" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></>,
-            Calendar: <><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></>,
-            Home: <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,
-            Search: <><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></>,
-            Filter: <><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></>,
-            Download: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></>,
-            BarChart: <><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></>
+            Play: () => <polygon points="5 3 19 12 5 21 5 3" />,
+            MapPin: () => <><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>,
+            DollarSign: () => <><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></>,
+            Clock: () => <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></>,
+            Car: () => <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />,
+            AlertTriangle: () => <><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><line x1="12" x2="12" y1="9" y2="13" /><line x1="12" x2="12.01" y1="17" y2="17" /></>,
+            CheckCircle: () => <><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></>,
+            Plus: () => <><line x1="12" x2="12" y1="5" y2="19" /><line x1="5" x2="19" y1="12" y2="12" /></>,
+            Settings: () => <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />,
+            Fuel: () => <><line x1="3" x2="15" y1="22" y2="22" /><line x1="4" x2="14" y1="9" y2="9" /><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18" /><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5" /></>,
+            Utensils: () => <><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></>,
+            Bed: () => <><path d="M2 4v16" /><path d="M2 8h18a2 2 0 0 1 2 2v10" /><path d="M2 17h20" /><path d="M6 8v9" /></>,
+            Briefcase: () => <><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></>,
+            CreditCard: () => <><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></>,
+            Wallet: () => <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4" />,
+            Landmark: () => <><line x1="3" x2="21" y1="22" y2="22" /><line x1="6" x2="6" y1="18" y2="11" /><line x1="10" x2="10" y1="18" y2="11" /><line x1="14" x2="14" y1="18" y2="11" /><line x1="18" x2="18" y1="18" y2="11" /><polygon points="12 2 20 7 4 7" /></>,
+            X: () => <><path d="M18 6 6 18" /><path d="m6 6 12 12" /></>,
+            Save: () => <><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></>,
+            Zap: () => <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
+            Truck: () => <><rect width="16" height="13" x="1" y="6" rx="2" /><polygon points="17 10 22 11 22 17 17 17 17 10" /></>,
+            Edit2: () => <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />,
+            ChevronDown: () => <path d="m6 9 6 6 6-6" />,
+            ShoppingBag: () => <><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></>,
+            History: () => <><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" /><path d="M3 3v9h9" /><path d="M12 7v5l4 2" /></>,
+            User: () => <><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>,
+            Users: () => <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
+            StickyNote: () => <><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z" /><path d="M15 3v6h6" /></>,
+            ArrowRight: () => <path d="M5 12h14M12 5l7 7-7 7" />,
+            Trash2: () => <><path d="M3 6h18" /><path d="M19 6v14c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V6" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></>,
+            Calendar: () => <><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></>,
+            Home: () => <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,
+            Search: () => <><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></>,
+            Filter: () => <><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></>,
+            Download: () => <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></>,
+            BarChart: () => <><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></>
         };
 
         const Icon = ({ name, size = 24, className = "" }) => {
-            if (!ICONS[name]) return null;
+            const IconComponent = ICONS[name];
+            if (!IconComponent) return null;
             return (
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -144,47 +179,13 @@
                     strokeLinejoin="round" 
                     className={className}
                 >
-                    {ICONS[name]}
+                    <IconComponent />
                 </svg>
             );
         };
 
         // ==========================================
-        // 2. CONSTANTES
-        // ==========================================
-        const LOCATIONS_CONFIG = {
-            'Cliente': { icon: 'User', color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-200' },
-            'Trabajo': { icon: 'Briefcase', color: 'text-slate-600', bg: 'bg-slate-50', border: 'border-slate-200' },
-            'Casa': { icon: 'Home', color: 'text-indigo-600', bg: 'bg-indigo-50', border: 'border-indigo-200' },
-            'Restaurante': { icon: 'Utensils', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' },
-            'Hotel': { icon: 'Bed', color: 'text-violet-600', bg: 'bg-violet-50', border: 'border-violet-200' },
-            'Otra': { icon: 'MapPin', color: 'text-gray-600', bg: 'bg-gray-50', border: 'border-gray-200' }
-        };
-        const LOCATIONS_PRESETS = Object.keys(LOCATIONS_CONFIG);
-
-        const EXPENSE_CATEGORIES = {
-            FOOD: ['Desayuno', 'Almuerzo', 'Merienda', 'Cena', 'Refrigerio'],
-            LODGING: ['Alojamiento'],
-            TRIP: ['Peaje', 'Estacionamiento', 'Carga Combustible', 'Carga Eléctrica'],
-            OTHER: ['Otros']
-        };
-
-        const PAYMENT_METHODS = [
-            { id: 'EFECTIVO', label: 'Efectivo', icon: 'Wallet' },
-            { id: 'DEBITO', label: 'Débito', icon: 'CreditCard' },
-            { id: 'CREDITO', label: 'Crédito', icon: 'CreditCard' },
-            { id: 'TRANSFERENCIA', label: 'Transferencia', icon: 'Landmark' },
-        ];
-
-        const VEHICLE_TYPES = [
-            { id: 'PERSONAL', label: 'Personal', short: 'Personal', icon: 'Car', type: 'fuel' },
-            { id: 'COMPANY_FUEL', label: 'Empresa Combustible', short: 'Emp. Comb.', icon: 'Truck', type: 'fuel' },
-            { id: 'COMPANY_ELECTRIC', label: 'Empresa Eléctrico', short: 'Emp. Elec.', icon: 'Zap', type: 'electric' },
-            { id: 'OTHER', label: 'Otros', short: 'Otros', icon: 'Car', type: 'fuel' },
-        ];
-
-        // ==========================================
-        // 3. COMPONENTES BÁSICOS
+        // 2. COMPONENTES
         // ==========================================
         const ToastNotification = ({ message, type = 'error', onClose }) => {
             useEffect(() => {
@@ -217,17 +218,17 @@
         };
 
         // ==========================================
-        // 4. APP PRINCIPAL - VERSIÓN SIMPLIFICADA
+        // 3. APP PRINCIPAL - VERSIÓN 2.1.0
         // ==========================================
         const App = () => {
-            // --- ESTADO BÁSICO ---
+            // --- ESTADO ---
             const [appState, setAppState] = useState('IDLE');
             const [lastLocation, setLastLocation] = useState('Casa');
             const [trips, setTrips] = useState([]);
             const [expenses, setExpenses] = useState([]);
             const [toastMessage, setToastMessage] = useState(null);
             
-            // Modales básicos
+            // Modales
             const [showLocationSelector, setShowLocationSelector] = useState(false);
             const [showExpenseCategorySelector, setShowExpenseCategorySelector] = useState(false);
             
@@ -237,7 +238,7 @@
                 period: 'all'
             });
             
-            // --- FUNCIONES BÁSICAS ---
+            // --- FUNCIONES ---
             const showToast = useCallback((message, type = 'error') => {
                 setToastMessage({ message, type });
             }, []);
@@ -245,6 +246,7 @@
             const handleLocationSelection = useCallback((loc) => {
                 setLastLocation(loc);
                 setShowLocationSelector(false);
+                localStorage.setItem('lastLocation', loc);
                 showToast(`Ubicación cambiada a: ${loc}`, 'success');
             }, [showToast]);
             
@@ -252,11 +254,27 @@
                 setFilters(prev => ({ ...prev, [key]: value }));
             }, []);
             
-            const formatMoney = useCallback((amount) => {
-                return Number(amount || 0).toFixed(2);
+            // Persistencia mejorada
+            useEffect(() => {
+                const savedTrips = localStorage.getItem('trips');
+                const savedExpenses = localStorage.getItem('expenses');
+                const savedLocation = localStorage.getItem('lastLocation');
+                
+                if (savedTrips) setTrips(JSON.parse(savedTrips));
+                if (savedExpenses) setExpenses(JSON.parse(savedExpenses));
+                if (savedLocation) setLastLocation(savedLocation);
             }, []);
             
-            // --- FILTRADO MEMOIZADO ---
+            // Guardar automáticamente
+            useEffect(() => {
+                localStorage.setItem('trips', JSON.stringify(trips));
+            }, [trips]);
+            
+            useEffect(() => {
+                localStorage.setItem('expenses', JSON.stringify(expenses));
+            }, [expenses]);
+            
+            // Filtrar viajes
             const filteredTrips = useMemo(() => {
                 return trips.filter(trip => {
                     if (filters.search) {
@@ -270,30 +288,23 @@
                 });
             }, [trips, filters.search]);
             
-            // --- INDEXEDDB SIMPLIFICADO ---
-            useEffect(() => {
-                // Cargar datos iniciales
-                const savedTrips = localStorage.getItem('trips');
-                const savedExpenses = localStorage.getItem('expenses');
-                const savedLocation = localStorage.getItem('lastLocation');
-                
-                if (savedTrips) setTrips(JSON.parse(savedTrips));
-                if (savedExpenses) setExpenses(JSON.parse(savedExpenses));
-                if (savedLocation) setLastLocation(savedLocation);
-            }, []);
-            
-            // --- EXPORTACIÓN ---
+            // Exportación mejorada
             const exportData = useCallback((format) => {
                 try {
                     let dataStr, filename, mimeType;
                     
                     if (format === 'json') {
-                        const data = { trips, expenses, lastLocation, exportDate: new Date().toISOString() };
+                        const data = { 
+                            trips, 
+                            expenses, 
+                            lastLocation, 
+                            exportDate: new Date().toISOString(),
+                            version: '2.1.0'
+                        };
                         dataStr = JSON.stringify(data, null, 2);
                         filename = `viajes_${new Date().toISOString().split('T')[0]}.json`;
                         mimeType = 'application/json';
                     } else if (format === 'csv') {
-                        // CSV simple para viajes
                         const headers = ['Fecha', 'Origen', 'Destino', 'Distancia (km)', 'Hora Inicio', 'Hora Fin'];
                         const rows = trips.map(t => [
                             t.date || '',
@@ -303,7 +314,9 @@
                             t.startTime || '',
                             t.endTime || ''
                         ]);
-                        dataStr = [headers, ...rows].map(row => row.join(',')).join('\n');
+                        dataStr = [headers, ...rows].map(row => 
+                            row.map(cell => `"${cell}"`).join(',')
+                        ).join('\n');
                         filename = `viajes_${new Date().toISOString().split('T')[0]}.csv`;
                         mimeType = 'text/csv';
                     }
@@ -322,7 +335,35 @@
                 }
             }, [trips, expenses, lastLocation, showToast]);
             
-            // --- RENDER PRINCIPAL ---
+            // Agregar viaje de prueba
+            const addTestTrip = useCallback(() => {
+                const testTrip = {
+                    id: Date.now(),
+                    date: new Date().toLocaleDateString('es-ES'),
+                    origin: lastLocation,
+                    destination: 'Cliente',
+                    distance: (Math.random() * 50 + 10).toFixed(1),
+                    startTime: '09:00',
+                    endTime: '10:30'
+                };
+                setTrips(prev => [testTrip, ...prev]);
+                showToast('Viaje de prueba agregado', 'success');
+            }, [lastLocation, showToast]);
+            
+            // Agregar gasto de prueba
+            const addTestExpense = useCallback(() => {
+                const testExpense = {
+                    id: Date.now(),
+                    date: new Date().toLocaleDateString('es-ES'),
+                    category: 'Peaje',
+                    amount: (Math.random() * 20 + 5).toFixed(2),
+                    description: 'Peaje de prueba'
+                };
+                setExpenses(prev => [testExpense, ...prev]);
+                showToast('Gasto de prueba agregado', 'success');
+            }, [showToast]);
+            
+            // --- RENDER ---
             return (
                 <div className="flex flex-col h-screen w-full max-w-md mx-auto shadow-2xl overflow-hidden font-sans relative bg-slate-100">
                     {/* Toast */}
@@ -340,18 +381,15 @@
                             <div className="bg-white w-full rounded-2xl p-4 shadow-xl" onClick={e => e.stopPropagation()}>
                                 <h3 className="text-sm font-bold text-slate-500 uppercase mb-3">Ubicación Actual</h3>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {LOCATIONS_PRESETS.map(loc => {
-                                        const preset = LOCATIONS_CONFIG[loc] || { color: 'text-slate-600', bg: 'bg-slate-50', border: 'border-slate-200' };
-                                        return (
-                                            <button 
-                                                key={loc} 
-                                                onClick={() => handleLocationSelection(loc)}
-                                                className={`p-3 rounded-xl text-sm font-bold border ${loc === lastLocation ? 'bg-blue-50 border-blue-500 text-blue-700' : `${preset.bg} ${preset.border} ${preset.color}`}`}
-                                            >
-                                                {loc}
-                                            </button>
-                                        );
-                                    })}
+                                    {['Casa', 'Cliente', 'Trabajo', 'Restaurante', 'Hotel', 'Otra'].map(loc => (
+                                        <button 
+                                            key={loc} 
+                                            onClick={() => handleLocationSelection(loc)}
+                                            className={`p-3 rounded-xl text-sm font-bold border ${loc === lastLocation ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}`}
+                                        >
+                                            {loc}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -364,15 +402,22 @@
                             <div className="bg-white w-full rounded-t-2xl p-6 relative z-10 animate-slide-in-bottom" onClick={e => e.stopPropagation()}>
                                 <h3 className="text-xl font-bold text-slate-800 mb-4">Nuevo Gasto</h3>
                                 <div className="grid grid-cols-2 gap-3">
-                                    {['Peaje', 'Estacionamiento', 'Carga Combustible', 'Almuerzo'].map(cat => (
-                                        <button key={cat} className="p-4 bg-slate-50 rounded-xl text-slate-700 font-bold hover:bg-slate-100">
+                                    {['Peaje', 'Estacionamiento', 'Carga Combustible', 'Almuerzo', 'Cena', 'Hotel'].map(cat => (
+                                        <button 
+                                            key={cat} 
+                                            onClick={() => {
+                                                addTestExpense();
+                                                setShowExpenseCategorySelector(false);
+                                            }}
+                                            className="p-4 bg-slate-50 rounded-xl text-slate-700 font-bold hover:bg-slate-100 active:scale-95 transition-transform"
+                                        >
                                             {cat}
                                         </button>
                                     ))}
                                 </div>
                                 <button 
                                     onClick={() => setShowExpenseCategorySelector(false)}
-                                    className="w-full mt-4 p-3 bg-slate-100 text-slate-500 rounded-xl font-bold"
+                                    className="w-full mt-4 p-3 bg-slate-100 text-slate-500 rounded-xl font-bold hover:bg-slate-200"
                                 >
                                     Cancelar
                                 </button>
@@ -387,14 +432,22 @@
                             <div className="bg-slate-800 text-white p-6 rounded-b-[2rem] shadow-xl">
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
-                                        <h1 className="text-xl font-bold">Asistente de Viaje v2.0</h1>
-                                        <p className="text-slate-400 text-xs">Fase 2 - Optimizado</p>
+                                        <h1 className="text-xl font-bold">Asistente de Viaje v2.1.0</h1>
+                                        <p className="text-slate-400 text-xs">Optimizado y corregido</p>
                                     </div>
                                     <div className="flex gap-2">
-                                        <button onClick={() => setAppState('HISTORY')} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">
+                                        <button 
+                                            onClick={() => setAppState('HISTORY')} 
+                                            className="bg-slate-700 p-2 rounded-full hover:bg-slate-600 transition-colors"
+                                            title="Historial"
+                                        >
                                             <Icon name="History" size={20} />
                                         </button>
-                                        <button onClick={() => setAppState('SETTINGS')} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">
+                                        <button 
+                                            onClick={() => setAppState('SETTINGS')} 
+                                            className="bg-slate-700 p-2 rounded-full hover:bg-slate-600 transition-colors"
+                                            title="Configuración"
+                                        >
                                             <Icon name="Settings" size={20} />
                                         </button>
                                     </div>
@@ -403,7 +456,7 @@
                                 <div className="grid grid-cols-2 gap-3">
                                     <button 
                                         onClick={() => setShowLocationSelector(true)}
-                                        className="bg-slate-700/50 p-3 rounded-2xl backdrop-blur-md text-left hover:bg-slate-700"
+                                        className="bg-slate-700/50 p-3 rounded-2xl backdrop-blur-md text-left hover:bg-slate-700 transition-colors"
                                     >
                                         <div className="text-slate-400 text-[10px] uppercase font-bold">Ubicación</div>
                                         <div className="flex items-center font-bold text-lg truncate">
@@ -422,10 +475,9 @@
                             {/* Contenido Central */}
                             <div className="flex-1 flex flex-col items-center justify-center p-6">
                                 <button 
-                                    onClick={() => {
-                                        showToast('Función de inicio de viaje', 'success');
-                                    }}
-                                    className="w-48 h-48 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-600 shadow-2xl shadow-emerald-200 flex flex-col items-center justify-center border-4 border-white active:scale-95"
+                                    onClick={addTestTrip}
+                                    className="w-48 h-48 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-600 shadow-2xl shadow-emerald-200 flex flex-col items-center justify-center border-4 border-white active:scale-95 transition-transform"
+                                    title="Agregar viaje de prueba"
                                 >
                                     <Icon name="Play" size={60} className="text-white ml-2 mb-1" />
                                     <span className="text-white font-bold text-lg tracking-widest mt-2">INICIAR</span>
@@ -434,30 +486,45 @@
                                 <div className="mt-8 flex items-center justify-center gap-4 w-full px-8">
                                     <button 
                                         onClick={() => setShowExpenseCategorySelector(true)}
-                                        className="flex-1 flex items-center justify-center bg-violet-50 py-3 rounded-2xl text-violet-700 font-bold text-sm hover:bg-violet-100 border border-violet-100"
+                                        className="flex-1 flex items-center justify-center bg-violet-50 py-3 rounded-2xl text-violet-700 font-bold text-sm hover:bg-violet-100 border border-violet-100 active:scale-95 transition-transform"
                                     >
                                         <Icon name="Plus" size={18} className="mr-2" /> Gasto
                                     </button>
                                     <button 
-                                        onClick={() => showToast('Selector de vehículo', 'success')}
-                                        className="flex-1 flex items-center justify-center bg-white py-3 rounded-2xl text-slate-600 font-bold text-sm hover:bg-slate-50 border border-white"
+                                        onClick={addTestTrip}
+                                        className="flex-1 flex items-center justify-center bg-white py-3 rounded-2xl text-slate-600 font-bold text-sm hover:bg-slate-50 border border-white active:scale-95 transition-transform"
                                     >
-                                        <Icon name="Car" size={18} className="mr-2 text-blue-500" /> Vehículo
+                                        <Icon name="Car" size={18} className="mr-2 text-blue-500" /> Viaje
                                     </button>
                                 </div>
                             </div>
                             
                             {/* Últimos Viajes */}
                             <div className="bg-white h-1/4 rounded-t-[2rem] shadow-lg p-6 overflow-hidden">
-                                <h3 className="text-slate-300 text-xs font-bold uppercase tracking-wider mb-4">Últimos Viajes</h3>
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="text-slate-300 text-xs font-bold uppercase tracking-wider">Últimos Viajes</h3>
+                                    {trips.length > 0 && (
+                                        <span className="text-xs text-slate-400">{trips.length} total</span>
+                                    )}
+                                </div>
                                 <div className="space-y-3 overflow-y-auto h-full pb-10 scrollbar-hide">
                                     {trips.length === 0 ? (
-                                        <p className="text-slate-300 text-center text-sm italic mt-4">No hay viajes registrados</p>
+                                        <div className="text-center py-8">
+                                            <Icon name="Car" size={48} className="mx-auto mb-2 text-slate-300" />
+                                            <p className="text-slate-400 text-sm">No hay viajes registrados</p>
+                                            <button 
+                                                onClick={addTestTrip}
+                                                className="mt-2 text-blue-600 text-sm font-medium"
+                                            >
+                                                Agregar viaje de prueba
+                                            </button>
+                                        </div>
                                     ) : (
                                         trips.slice(0, 3).map(trip => (
-                                            <div key={trip.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                                            <div key={trip.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-slate-200">
                                                 <div className="flex justify-between items-center border-b border-slate-50 pb-2 mb-1">
                                                     <span className="text-xs font-bold text-slate-400">{trip.date || 'Sin fecha'}</span>
+                                                    <span className="text-xs text-slate-500">{trip.startTime} - {trip.endTime}</span>
                                                 </div>
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex flex-col">
@@ -479,13 +546,16 @@
                         </div>
                     )}
                     
-                    {/* VISTA HISTORIAL CON FILTROS */}
+                    {/* VISTA HISTORIAL */}
                     {appState === 'HISTORY' && (
                         <div className="flex flex-col h-full bg-white">
                             {/* Header */}
                             <div className="bg-slate-800 text-white p-6">
                                 <div className="flex items-center mb-4">
-                                    <button onClick={() => setAppState('IDLE')} className="mr-2">
+                                    <button 
+                                        onClick={() => setAppState('IDLE')} 
+                                        className="mr-2 p-1 hover:bg-slate-700 rounded-full"
+                                    >
                                         <Icon name="ArrowRight" className="rotate-180" size={24} />
                                     </button>
                                     <h2 className="text-2xl font-bold ml-2">Historial</h2>
@@ -518,8 +588,8 @@
                                             <button
                                                 key={period}
                                                 onClick={() => handleFilterChange('period', period)}
-                                                className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap ${
-                                                    filters.period === period ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'
+                                                className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+                                                    filters.period === period ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                                                 }`}
                                             >
                                                 {period.charAt(0).toUpperCase() + period.slice(1)}
@@ -532,11 +602,11 @@
                             {/* Estadísticas */}
                             <div className="p-4 border-b border-slate-200">
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-blue-50 p-3 rounded-lg">
+                                    <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
                                         <div className="text-sm text-blue-700 font-medium">Total Viajes</div>
                                         <div className="text-2xl font-bold text-blue-900">{trips.length}</div>
                                     </div>
-                                    <div className="bg-emerald-50 p-3 rounded-lg">
+                                    <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
                                         <div className="text-sm text-emerald-700 font-medium">Total Gastos</div>
                                         <div className="text-2xl font-bold text-emerald-900">{expenses.length}</div>
                                     </div>
@@ -549,32 +619,47 @@
                                     <h3 className="font-bold text-slate-700">
                                         Viajes ({filteredTrips.length})
                                     </h3>
-                                    <button 
-                                        onClick={() => exportData('csv')}
-                                        className="flex items-center text-sm text-blue-600 font-medium hover:text-blue-800"
-                                    >
-                                        <Icon name="Download" size={16} className="mr-1" />
-                                        Exportar
-                                    </button>
+                                    <div className="flex gap-2">
+                                        <button 
+                                            onClick={addTestTrip}
+                                            className="text-sm text-blue-600 font-medium hover:text-blue-800"
+                                        >
+                                            + Viaje
+                                        </button>
+                                        <button 
+                                            onClick={() => exportData('csv')}
+                                            className="flex items-center text-sm text-blue-600 font-medium hover:text-blue-800"
+                                        >
+                                            <Icon name="Download" size={16} className="mr-1" />
+                                            Exportar
+                                        </button>
+                                    </div>
                                 </div>
                                 
                                 {filteredTrips.length === 0 ? (
                                     <div className="text-center py-8 text-slate-400">
                                         <Icon name="Car" size={48} className="mx-auto mb-2 opacity-30" />
                                         <p>No hay viajes registrados</p>
-                                        {filters.search && (
+                                        {filters.search ? (
                                             <button 
                                                 onClick={() => handleFilterChange('search', '')}
                                                 className="mt-2 text-blue-600 text-sm"
                                             >
                                                 Limpiar búsqueda
                                             </button>
+                                        ) : (
+                                            <button 
+                                                onClick={addTestTrip}
+                                                className="mt-2 text-blue-600 text-sm"
+                                            >
+                                                Agregar viaje de prueba
+                                            </button>
                                         )}
                                     </div>
                                 ) : (
                                     <div className="space-y-3">
                                         {filteredTrips.map(trip => (
-                                            <div key={trip.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                                            <div key={trip.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-slate-200">
                                                 <div className="flex justify-between items-center">
                                                     <div>
                                                         <div className="font-bold text-slate-800">{trip.origin} → {trip.destination}</div>
@@ -596,14 +681,14 @@
                                 <div className="grid grid-cols-2 gap-3">
                                     <button 
                                         onClick={() => exportData('csv')}
-                                        className="bg-blue-50 hover:bg-blue-100 text-blue-700 p-3 rounded-lg font-medium text-sm border border-blue-200"
+                                        className="bg-blue-50 hover:bg-blue-100 text-blue-700 p-3 rounded-lg font-medium text-sm border border-blue-200 transition-colors"
                                     >
                                         <Icon name="Download" size={18} className="mx-auto mb-1" />
                                         CSV
                                     </button>
                                     <button 
                                         onClick={() => exportData('json')}
-                                        className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 p-3 rounded-lg font-medium text-sm border border-emerald-200"
+                                        className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 p-3 rounded-lg font-medium text-sm border border-emerald-200 transition-colors"
                                     >
                                         <Icon name="Save" size={18} className="mx-auto mb-1" />
                                         JSON
@@ -617,39 +702,55 @@
                     {appState === 'SETTINGS' && (
                         <div className="flex flex-col h-full bg-slate-50 p-6">
                             <div className="flex items-center mb-6">
-                                <button onClick={() => setAppState('IDLE')} className="p-2 -ml-2 text-slate-400 hover:text-slate-600">
+                                <button 
+                                    onClick={() => setAppState('IDLE')} 
+                                    className="p-2 -ml-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200"
+                                >
                                     <Icon name="ArrowRight" className="rotate-180" size={24} />
                                 </button>
                                 <h2 className="text-2xl font-bold ml-2">Configuración</h2>
                             </div>
                             
-                            <div className="space-y-6 flex-1 overflow-y-auto">
-                                {/* Memoization Info */}
+                            <div className="space-y-6 flex-1 overflow-y-auto custom-scrollbar">
+                                {/* Información de Versión */}
                                 <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                                     <h3 className="font-bold text-slate-700 mb-2 flex items-center">
                                         <Icon name="Zap" size={18} className="mr-2 text-yellow-500" />
-                                        Optimizaciones Fase 2
+                                        Asistente de Viaje v2.1.0
                                     </h3>
-                                    <ul className="text-sm text-slate-600 space-y-1">
-                                        <li>• Memoization aplicada</li>
-                                        <li>• Filtros en tiempo real</li>
-                                        <li>• Exportación CSV/JSON</li>
-                                        <li>• IndexedDB mejorado</li>
-                                    </ul>
+                                    <p className="text-sm text-slate-600 mb-3">Versión optimizada y corregida con Tailwind CSS v3.4.1</p>
+                                    <div className="text-xs text-slate-500 space-y-1">
+                                        <div className="flex justify-between">
+                                            <span>Viajes registrados:</span>
+                                            <span className="font-bold">{trips.length}</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>Gastos registrados:</span>
+                                            <span className="font-bold">{expenses.length}</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>Última ubicación:</span>
+                                            <span className="font-bold">{lastLocation}</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 
-                                {/* Estadísticas */}
+                                {/* Acciones Rápidas */}
                                 <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                                    <h3 className="font-bold text-slate-700 mb-4">Estadísticas</h3>
+                                    <h3 className="font-bold text-slate-700 mb-3">Acciones Rápidas</h3>
                                     <div className="grid grid-cols-2 gap-3">
-                                        <div className="bg-slate-50 p-3 rounded-lg">
-                                            <div className="text-sm text-slate-600">Viajes</div>
-                                            <div className="text-2xl font-bold text-slate-800">{trips.length}</div>
-                                        </div>
-                                        <div className="bg-slate-50 p-3 rounded-lg">
-                                            <div className="text-sm text-slate-600">Gastos</div>
-                                            <div className="text-2xl font-bold text-slate-800">{expenses.length}</div>
-                                        </div>
+                                        <button 
+                                            onClick={addTestTrip}
+                                            className="bg-blue-50 hover:bg-blue-100 text-blue-700 p-3 rounded-lg font-medium text-sm border border-blue-200"
+                                        >
+                                            + Viaje prueba
+                                        </button>
+                                        <button 
+                                            onClick={addTestExpense}
+                                            className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 p-3 rounded-lg font-medium text-sm border border-emerald-200"
+                                        >
+                                            + Gasto prueba
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -660,13 +761,13 @@
                                     <div className="space-y-3">
                                         <button 
                                             onClick={() => exportData('json')}
-                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium"
+                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors"
                                         >
                                             Exportar como JSON
                                         </button>
                                         <button 
                                             onClick={() => exportData('csv')}
-                                            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium"
+                                            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium transition-colors"
                                         >
                                             Exportar como CSV
                                         </button>
@@ -678,16 +779,42 @@
                                     <h3 className="font-bold text-slate-700 mb-3">Gestión de Datos</h3>
                                     <button 
                                         onClick={() => {
-                                            localStorage.clear();
-                                            setTrips([]);
-                                            setExpenses([]);
-                                            setLastLocation('Casa');
-                                            showToast('Datos reiniciados', 'success');
+                                            if (window.confirm('¿Estás seguro de querer reiniciar todos los datos? Esta acción no se puede deshacer.')) {
+                                                localStorage.clear();
+                                                setTrips([]);
+                                                setExpenses([]);
+                                                setLastLocation('Casa');
+                                                showToast('Datos reiniciados correctamente', 'success');
+                                            }
                                         }}
-                                        className="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 rounded-lg font-medium"
+                                        className="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 rounded-lg font-medium transition-colors"
                                     >
-                                        Reiniciar Datos
+                                        Reiniciar Todos los Datos
                                     </button>
+                                    <p className="text-xs text-slate-500 mt-2">Elimina todos los viajes, gastos y configuraciones.</p>
+                                </div>
+                                
+                                {/* Información Técnica */}
+                                <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                                    <h3 className="font-bold text-slate-700 mb-3">Información Técnica</h3>
+                                    <div className="text-xs text-slate-600 space-y-2">
+                                        <div className="flex justify-between">
+                                            <span>React:</span>
+                                            <span>18.2.0</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>Tailwind CSS:</span>
+                                            <span>3.4.1</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>Modo Offline:</span>
+                                            <span className="text-emerald-600 font-bold">Activo</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>Última actualización:</span>
+                                            <span>{new Date().toLocaleDateString('es-ES')}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
